@@ -7,7 +7,7 @@
     <fragment
         android:id="@+id/itemHomeFragment"
         android:name="com.myprojects.ecommerceapp.fragment.ItemHomeFragment"
-        android:label="fragment_item_home"
+        android:label="@string/title_home"
         tools:layout="@layout/fragment_item_home" >
         <action
             android:id="@+id/action_itemHomeFragment_to_profileFragment"
@@ -16,7 +16,7 @@
     <fragment
         android:id="@+id/profileFragment"
         android:name="com.myprojects.ecommerceapp.fragment.ProfileFragment"
-        android:label="fragment_profile"
+        android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" >
         <action
             android:id="@+id/action_profileFragment_to_itemHomeFragment"

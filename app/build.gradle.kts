@@ -56,6 +56,7 @@ dependencies {
     implementation(libs.room.runtime) //androidx.room:room-runtime:2.6.1
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.room.ktx)
+    implementation(libs.androidx.annotation.v182)
 
     implementation(libs.kotlinx.coroutines.android)
 
@@ -64,4 +65,6 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.livedata.ktx)
+
+    implementation(libs.circleimageview)
 }

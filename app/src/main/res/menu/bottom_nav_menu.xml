@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home_item"
+        android:id="@+id/itemHomeFragment"
         android:icon="@drawable/baseline_home_24"
-        android:title="Home"
+        android:title="@string/title_home"
         />
     <item
-        android:id="@+id/profie"
+        android:id="@+id/profileFragment"
         android:icon="@drawable/baseline_account_circle_24"
-        android:title="Profile"
+        android:title="@string/title_profile"
         />
-    <item
-        android:id="cart"
-        android:icon="@drawable/baseline_shopping_cart_24"
-        android:title="Cart"
-        />
+<!--    <item-->
+<!--        android:id="cart"-->
+<!--        android:icon="@drawable/baseline_shopping_cart_24"-->
+<!--        android:title="Cart"-->
+<!--        />-->
 </menu>

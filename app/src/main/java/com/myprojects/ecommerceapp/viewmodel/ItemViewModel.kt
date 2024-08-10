@@ -8,8 +8,8 @@ import com.myprojects.ecommerceapp.repository.ItemRepository
 import kotlinx.coroutines.launch
 
 class ItemViewModel(private val app: Application,
-                    private val repository: ItemRepository):
-    AndroidViewModel(app) {
+                    private val repository: ItemRepository)
+    :AndroidViewModel(app) {
 
         fun insertItems(item:Item) = viewModelScope.launch {
             repository.insertItems(item)
