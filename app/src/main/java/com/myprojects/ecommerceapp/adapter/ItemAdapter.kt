@@ -2,10 +2,13 @@ package com.myprojects.ecommerceapp.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.myprojects.ecommerceapp.databinding.ItemViewBinding
+import com.myprojects.ecommerceapp.fragment.ItemHomeFragmentDirections
+import com.myprojects.ecommerceapp.fragment.ShowItemFragmentDirections
 import com.myprojects.ecommerceapp.model.Item
 
 class ItemAdapter():RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
@@ -45,5 +48,11 @@ class ItemAdapter():RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
         holder.itemBinding.textViewName.text = currentItem.nameItem
         holder.itemBinding.textViewPrice.text = currentItem.price.toString()
         holder.itemBinding.textViewPrice.text = currentItem.description
+
+        holder.itemView.setOnClickListener{
+            val direction = ItemHomeFragmentDirections.actionItemHomeFragmentToShowItemFragment(currentItem)
+
+            it.findNavController().navigate(direction)
+        }
     }
 }

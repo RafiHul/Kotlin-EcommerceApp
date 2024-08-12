@@ -42,7 +42,15 @@
     </fragment>
     <fragment
         android:id="@+id/showItemFragment"
-        android:name="com.myprojects.ecommerceapp.ShowItemFragment"
+        android:name="com.myprojects.ecommerceapp.fragment.ShowItemFragment"
         android:label="fragment_show_item"
-        tools:layout="@layout/fragment_show_item" />
+        tools:layout="@layout/fragment_show_item" >
+        <argument
+            android:name="item"
+            app:argType="com.myprojects.ecommerceapp.model.Item"
+            app:nullable="true"/>
+        <action
+            android:id="@+id/action_showItemFragment_to_itemHomeFragment"
+            app:destination="@id/itemHomeFragment" />
+    </fragment>
 </navigation>

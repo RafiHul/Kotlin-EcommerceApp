@@ -1,0 +1,64 @@
+package com.myprojects.ecommerceapp.fragment
+
+import android.os.Bundle
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
+import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.navArgs
+import com.myprojects.ecommerceapp.MainActivity
+import com.myprojects.ecommerceapp.R
+import com.myprojects.ecommerceapp.databinding.FragmentShowItemBinding
+import com.myprojects.ecommerceapp.model.Item
+import com.myprojects.ecommerceapp.viewmodel.ItemViewModel
+
+class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
+
+    private var _binding : FragmentShowItemBinding? = null
+    private val binding get() = _binding!!
+    private val args: ShowItemFragmentArgs by navArgs()
+
+    lateinit var currentItem: Item
+    lateinit var itemsViewModel: ItemViewModel
+
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        // Inflate the layout for this fragment
+        _binding = FragmentShowItemBinding.inflate(inflater,container,false)
+
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        itemsViewModel = (activity as MainActivity).itemViewModel
+        currentItem = args.item!!
+        initViews()
+    }
+
+    private fun initViews() {
+        binding.textViewId.text = currentItem.id.toString()
+        binding.textViewHarga.text = currentItem.price.toString()
+        binding.textViewJudul.text = currentItem.nameItem
+
+        binding.buttonHapus.setOnClickListener {
+            deletenote()
+        }
+    }
+
+    private fun deletenote(){
+        AlertDialog.Builder(requireContext()).apply {
+            setTitle("Hapus Item ini")
+            setMessage("Kamu yakin ingin menghapus item ini ?")
+            setPositiveButton("Hapus"){_,_ ->
+                itemsViewModel.deleteItems(currentItem)
+                view?.findNavController()?.navigate(R.id.action_showItemFragment_to_itemHomeFragment)
+            }
+            setNegativeButton("TIdak",null)
+        }.create().show()
+    }
+}
