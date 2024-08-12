@@ -10,8 +10,9 @@
         android:id="@+id/textViewId"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:text="1"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:gravity="center_horizontal|center_vertical"
+        android:text="1" />
 
     <TextView
         android:id="@+id/textViewName"
