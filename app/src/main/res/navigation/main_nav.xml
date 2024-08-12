@@ -12,6 +12,9 @@
         <action
             android:id="@+id/action_itemHomeFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_itemHomeFragment_to_showItemFragment"
+            app:destination="@id/showItemFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -33,5 +36,13 @@
         <action
             android:id="@+id/action_newItemFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_newItemFragment_to_itemHomeFragment"
+            app:destination="@id/itemHomeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/showItemFragment"
+        android:name="com.myprojects.ecommerceapp.ShowItemFragment"
+        android:label="fragment_show_item"
+        tools:layout="@layout/fragment_show_item" />
 </navigation>
