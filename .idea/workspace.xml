@@ -46,16 +46,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4805401-bf07-4e40-ad2e-f65b3e4de7aa" name="Changes" comment="new item fragment">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/ProfileViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/ProfileViewModelFactory.kt" afterDir="false" />
+    <list default="true" id="a4805401-bf07-4e40-ad2e-f65b3e4de7aa" name="Changes" comment="add item click listener and profileviewmodel">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/NewItemFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/NewItemFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/ProfileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_new_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/NewItemFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/NewItemFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/main_nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/main_nav.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/themes.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +59,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=LJ8HF6WSVK5DONGQ)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/home/Rafihul/.android/avd/Small_Phone_Edited_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -343,7 +337,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723422726458</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="add item click listener and profileviewmodel">
+      <option name="closed" value="true" />
+      <created>1723426330766</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1723426330766</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -358,6 +360,7 @@
     <MESSAGE value="itemAdapter" />
     <MESSAGE value="test bottom nav and add fragment" />
     <MESSAGE value="new item fragment" />
-    <option name="LAST_COMMIT_MESSAGE" value="new item fragment" />
+    <MESSAGE value="add item click listener and profileviewmodel" />
+    <option name="LAST_COMMIT_MESSAGE" value="add item click listener and profileviewmodel" />
   </component>
 </project>

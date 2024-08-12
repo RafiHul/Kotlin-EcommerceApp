@@ -29,5 +29,9 @@
         android:id="@+id/newItemFragment"
         android:name="com.myprojects.ecommerceapp.fragment.NewItemFragment"
         android:label="fragment_new_item"
-        tools:layout="@layout/fragment_new_item" />
+        tools:layout="@layout/fragment_new_item" >
+        <action
+            android:id="@+id/action_newItemFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+    </fragment>
 </navigation>
