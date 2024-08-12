@@ -21,5 +21,13 @@
         <action
             android:id="@+id/action_profileFragment_to_itemHomeFragment"
             app:destination="@id/itemHomeFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_newItemFragment"
+            app:destination="@id/newItemFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/newItemFragment"
+        android:name="com.myprojects.ecommerceapp.NewItemFragment"
+        android:label="fragment_new_item"
+        tools:layout="@layout/fragment_new_item" />
 </navigation>
