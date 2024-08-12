@@ -25,5 +25,7 @@ class ItemViewModel(private val app: Application,
 
         fun getAllItems() = repository.getAllItems()
 
+        fun getItemById(id:Int) = repository.getItemById(id)
+
         fun searchItems(query: String?) = repository.searchItems(query)
 }

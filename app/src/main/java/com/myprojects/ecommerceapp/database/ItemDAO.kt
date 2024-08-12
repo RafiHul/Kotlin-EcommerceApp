@@ -24,6 +24,9 @@ interface ItemDAO {
     @Query("SELECT * FROM items")
     fun GetAllItems():LiveData<List<Item>>
 
+    @Query("SELECT * FROM items WHERE id == :query")
+    fun GetItemById(query:Int):LiveData<Item>
+
     @Query("SELECT * FROM items WHERE nameItem LIKE:query")
     fun SearchItem(query:String?):LiveData<List<Item>>
 }

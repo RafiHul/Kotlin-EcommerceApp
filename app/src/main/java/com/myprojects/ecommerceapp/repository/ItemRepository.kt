@@ -10,4 +10,5 @@ class ItemRepository(private val db: ItemDatabase) {
 
     fun getAllItems() = db.getItemDao().GetAllItems()
     fun searchItems(query: String?) = db.getItemDao().SearchItem(query)
+    fun getItemById(id: Int) = db.getItemDao().GetItemById(id)
 }
