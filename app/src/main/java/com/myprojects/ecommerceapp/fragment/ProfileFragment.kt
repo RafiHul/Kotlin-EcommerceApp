@@ -29,7 +29,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             .get(ProfileViewModel::class.java)
 
         profileViewModel.addItemButton()
-
+        profileViewModel.registerButton()
         return binding.root
     }
 

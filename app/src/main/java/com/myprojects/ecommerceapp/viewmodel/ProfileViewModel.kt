@@ -12,4 +12,10 @@ class ProfileViewModel(val binding:FragmentProfileBinding):ViewModel() {
             it.findNavController().navigate(R.id.action_profileFragment_to_newItemFragment)
         }
     }
+
+    fun registerButton(){
+        binding.buttonRegister.setOnClickListener{
+            it.findNavController().navigate(R.id.action_profileFragment_to_registerFragment)
+        }
+    }
 }
