@@ -23,6 +23,12 @@ suspend fun saveLoginInfo(context:Context,username: String) {
 
 fun getLoginInfo(context: Context): Flow<String?> {
     return context.dataStore.data.map { preferences ->
-        preferences[PreferenceKeys.USERNAME]
+        preferences[PreferenceKeys.USERNAME] ?: ""
+    }
+}
+
+suspend fun clearLoginInfo(context: Context) {
+    context.dataStore.edit { preferences ->
+        preferences.clear()
     }
 }

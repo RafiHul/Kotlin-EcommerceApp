@@ -30,7 +30,6 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentLoginBinding.inflate(inflater,container,false)
-        clickbutton()
 
         return binding.root
     }
@@ -39,6 +38,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
         userViewModel = (activity as MainActivity).userViewModel
+        clickbutton()
 
     }
 
@@ -64,7 +64,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             logDat.observe(viewLifecycleOwner){
                 if (it.isNotEmpty()){
                     userViewModel.saveLoginData(requireActivity(),nameField)
-                    Log.d("LoginFragment", "Berhasil Login $it")
+                    Toast.makeText(context, "Selamat Datang $nameField", Toast.LENGTH_SHORT).show()
+                    navController.navigate(R.id.action_loginFragment_to_itemHomeFragment)
                 } else {
                     Toast.makeText(context, "Username Atau Password anda salah", Toast.LENGTH_SHORT).show()
                 }
