@@ -67,4 +67,11 @@ dependencies {
     implementation(libs.androidx.lifecycle.livedata.ktx)
 
     implementation(libs.circleimageview)
+
+    //datastore
+    implementation(libs.androidx.datastore.preferences.core)//"androidx.datastore:datastore-preferences-core:1.1.1"
+    implementation(libs.androidx.datastore.core.android)
+    implementation(libs.androidx.datastore.preferences) //"androidx.datastore:datastore-preferences:1.1.1"
+
+    //baca selengkapnya mengenai data store soalnya ada 2 jenis
 }

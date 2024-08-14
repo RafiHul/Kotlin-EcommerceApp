@@ -15,12 +15,22 @@
           <theme>@style/Theme.EcommerceApp</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml">
+        <config>
+          <theme>@style/Theme.EcommerceApp</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_new_item.xml">
         <config>
           <theme>@style/Theme.EcommerceApp</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml">
+        <config>
+          <theme>@style/Theme.EcommerceApp</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_register.xml">
         <config>
           <theme>@style/Theme.EcommerceApp</theme>
         </config>
@@ -51,14 +61,19 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4805401-bf07-4e40-ad2e-f65b3e4de7aa" name="Changes" comment="click home item and delete item">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/UserDAO.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/UserDatabase.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/model/User.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/repository/UserRepository.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/UserViewModel.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/UserViewModelFactory.kt" afterDir="false" />
+    <list default="true" id="a4805401-bf07-4e40-ad2e-f65b3e4de7aa" name="Changes" comment="register system">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/DataStoreUtil.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/UserDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/UserDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/ItemHomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/ItemHomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/LoginFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/NewItemFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/NewItemFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/repository/UserRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/repository/UserRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/UserViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/UserViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/libs.versions.toml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,11 +137,15 @@
         <option value="layoutResourceFile_vertical" />
         <option value="resourceFile" />
         <option value="Kotlin Class" />
+        <option value="Kotlin File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -394,7 +413,39 @@
       <option name="project" value="LOCAL" />
       <updated>1723443863041</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="User Databases">
+      <option name="closed" value="true" />
+      <created>1723513387922</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1723513387923</updated>
+    </task>
+    <task id="LOCAL-00020" summary="login and register ui">
+      <option name="closed" value="true" />
+      <created>1723528173119</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1723528173119</updated>
+    </task>
+    <task id="LOCAL-00021" summary="login and register fragment">
+      <option name="closed" value="true" />
+      <created>1723529590339</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1723529590339</updated>
+    </task>
+    <task id="LOCAL-00022" summary="register system">
+      <option name="closed" value="true" />
+      <created>1723532057557</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1723532057557</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -415,6 +466,10 @@
     <MESSAGE value="show item ui" />
     <MESSAGE value="add query getitemsbyid" />
     <MESSAGE value="click home item and delete item" />
-    <option name="LAST_COMMIT_MESSAGE" value="click home item and delete item" />
+    <MESSAGE value="User Databases" />
+    <MESSAGE value="login and register ui" />
+    <MESSAGE value="login and register fragment" />
+    <MESSAGE value="register system" />
+    <option name="LAST_COMMIT_MESSAGE" value="register system" />
   </component>
 </project>

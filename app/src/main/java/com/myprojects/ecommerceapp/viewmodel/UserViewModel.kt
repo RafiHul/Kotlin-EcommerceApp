@@ -1,6 +1,7 @@
 package com.myprojects.ecommerceapp.viewmodel
 
 import android.app.Application
+import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.myprojects.ecommerceapp.model.User
@@ -26,6 +27,12 @@ class UserViewModel(app: Application,
         repository.login(username, password)
     }
 
+    fun saveLoginData(context: Context,username: String) = viewModelScope.launch {
+        repository.saveLoginData(context,username)
+    }
+
+
+    fun getLoginData(context: Context) = repository.getLoginData(context)
     fun getUserByName(query:String) = repository.getUserByName(query)
     fun getUserById(id:Int) = repository.getUserById(id)
     fun checkExitsUser() = repository.checkExistUser()

@@ -23,11 +23,11 @@ interface UserDAO {
     suspend fun Login(username:String,password:String): User?
 
     @Query("SELECT * FROM users WHERE username == :query")
-    fun GetUserByName(query:String): LiveData<User>?
+    fun GetUserByName(query:String): User?
 
     @Query("SELECT * FROM users WHERE id == :query")
     fun GetUserById(query:Int): LiveData<User>?
 
     @Query("SELECT username FROM users")
-    fun CheckUserExist(): LiveData<List<String>>?
+    fun CheckUserExist(): LiveData<List<String>>
 }
