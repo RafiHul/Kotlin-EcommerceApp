@@ -23,15 +23,13 @@ class UserViewModel(app: Application,
         repository.deleteUsers(user)
     }
 
-    fun login(username:String,password:String) = viewModelScope.launch {
-        repository.login(username, password)
-    }
 
     fun saveLoginData(context: Context,username: String) = viewModelScope.launch {
         repository.saveLoginData(context,username)
     }
 
 
+    fun login(username:String,password:String) = repository.login(username, password)
     fun getLoginData(context: Context) = repository.getLoginData(context)
     fun getUserByName(query:String) = repository.getUserByName(query)
     fun getUserById(id:Int) = repository.getUserById(id)

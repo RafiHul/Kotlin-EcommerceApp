@@ -42,7 +42,7 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
         super.onViewCreated(view, savedInstanceState)
         itemViewModel = (activity as MainActivity).itemViewModel
         myView = view
-        navController = myView.findNavController()
+        navController = findNavController()
     }
 
     private fun saveItem() {
@@ -51,9 +51,9 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
 
         if (judulItem.isEmpty() || hargaItem.isEmpty()){
             Toast.makeText(context, "TIdak Boleh Ada yang kosong", Toast.LENGTH_SHORT).show()
-            navController.navigate(R.id.action_newItemFragment_to_itemHomeFragment)
         } else {
             itemViewModel.insertItems(Item(0,judulItem,hargaItem.toDouble(),"test"))
+            navController.navigate(R.id.action_newItemFragment_to_itemHomeFragment)
         }
     }
 
@@ -61,7 +61,7 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
         super.onAttach(context)
 
         requireActivity().onBackPressedDispatcher.addCallback{
-            if (navController.currentDestination?.id == R.id.newItemFragment){
+            if (navController.currentDestination?.id == R.id.profileFragment){
                 navController.navigate(R.id.action_newItemFragment_to_profileFragment)
             }
         }

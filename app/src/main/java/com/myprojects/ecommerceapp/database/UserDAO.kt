@@ -20,7 +20,7 @@ interface UserDAO {
     suspend fun DeleteUser(user: User)
 
     @Query("SELECT * FROM users WHERE username = :username AND password = :password")
-    suspend fun Login(username:String,password:String): User?
+    fun Login(username:String,password:String): LiveData<List<User>>
 
     @Query("SELECT * FROM users WHERE username == :query")
     fun GetUserByName(query:String): User?
