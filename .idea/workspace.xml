@@ -61,17 +61,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4805401-bf07-4e40-ad2e-f65b3e4de7aa" name="Changes" comment="Login feature">
+    <list default="true" id="a4805401-bf07-4e40-ad2e-f65b3e4de7aa" name="Changes" comment="account profile feature (bugs)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/DataStoreUtil.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/DataStoreUtil.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/ItemHomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/ItemHomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/UserDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/UserDAO.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/LoginFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/LoginFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/ProfileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/ProfileFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/ProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/ProfileViewModel.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/ProfileViewModelFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/ProfileViewModelFactory.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_profile.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/main_nav.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/main_nav.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -459,7 +457,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723605047818</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="account profile feature (bugs)">
+      <option name="closed" value="true" />
+      <created>1723618392855</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1723618392855</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -486,6 +492,7 @@
     <MESSAGE value="register system" />
     <MESSAGE value="datastore init to model" />
     <MESSAGE value="Login feature" />
-    <option name="LAST_COMMIT_MESSAGE" value="Login feature" />
+    <MESSAGE value="account profile feature (bugs)" />
+    <option name="LAST_COMMIT_MESSAGE" value="account profile feature (bugs)" />
   </component>
 </project>

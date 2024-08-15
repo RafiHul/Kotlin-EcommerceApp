@@ -23,7 +23,7 @@ interface UserDAO {
     fun Login(username:String,password:String): LiveData<List<User>>
 
     @Query("SELECT * FROM users WHERE username == :query")
-    fun GetUserByName(query:String): User?
+    fun GetUserByName(query:String): LiveData<User>?
 
     @Query("SELECT * FROM users WHERE id == :query")
     fun GetUserById(query:Int): LiveData<User>?

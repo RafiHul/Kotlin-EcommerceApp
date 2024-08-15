@@ -64,6 +64,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
             logDat.observe(viewLifecycleOwner){
                 if (it.isNotEmpty()){
                     userViewModel.saveLoginData(requireActivity(),nameField)
+                    Log.d("LoginFragment", "LoginUser: $it")
                     Toast.makeText(context, "Selamat Datang $nameField", Toast.LENGTH_SHORT).show()
                     navController.navigate(R.id.action_loginFragment_to_itemHomeFragment)
                 } else {
