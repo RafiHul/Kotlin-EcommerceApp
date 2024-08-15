@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_profileFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_topUpFragment"
+            app:destination="@id/topUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/newItemFragment"
@@ -82,5 +85,14 @@
         <action
             android:id="@+id/action_loginFragment_to_itemHomeFragment"
             app:destination="@id/itemHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/topUpFragment"
+        android:name="com.myprojects.ecommerceapp.fragment.TopUpFragment"
+        android:label="fragment_top_up"
+        tools:layout="@layout/fragment_top_up" >
+        <action
+            android:id="@+id/action_topUpFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
     </fragment>
 </navigation>
