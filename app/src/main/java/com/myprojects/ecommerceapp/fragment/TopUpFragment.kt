@@ -34,9 +34,13 @@ class TopUpFragment : Fragment(R.layout.fragment_top_up) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        topUpSaldoViewModel = ViewModelProvider(this).get(TopUpSaldoViewModel::class.java)
-        userViewModel = (activity as MainActivity).userViewModel
+        setUpViewModel()
+        SetSaldo()
+        initUi()
+        topUpButton()
+    }
 
+    private fun SetSaldo() {
         val namaUser = arguments?.getString("username")
 
         userViewModel.getUserByName(namaUser.toString())?.observe(viewLifecycleOwner){
@@ -45,9 +49,11 @@ class TopUpFragment : Fragment(R.layout.fragment_top_up) {
                 userData = it
             } ?: Toast.makeText(context, "Error Saat Load Akun Anda", Toast.LENGTH_SHORT).show()
         }
+    }
 
-        initUi()
-        topUpButton()
+    private fun setUpViewModel() {
+        topUpSaldoViewModel = ViewModelProvider(this).get(TopUpSaldoViewModel::class.java)
+        userViewModel = (activity as MainActivity).userViewModel
     }
 
     private fun topUpButton() {

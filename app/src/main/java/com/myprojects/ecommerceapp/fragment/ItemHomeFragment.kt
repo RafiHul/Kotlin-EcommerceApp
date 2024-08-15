@@ -24,7 +24,7 @@ class ItemHomeFragment : Fragment(R.layout.fragment_item_home) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentItemHomeBinding.inflate(inflater,container,false)
         return binding.root

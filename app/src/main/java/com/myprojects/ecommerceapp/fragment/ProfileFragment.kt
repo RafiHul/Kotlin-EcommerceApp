@@ -12,6 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.myprojects.ecommerceapp.MainActivity
 import com.myprojects.ecommerceapp.R
+import com.myprojects.ecommerceapp.clearLoginInfo
 import com.myprojects.ecommerceapp.databinding.FragmentProfileBinding
 import com.myprojects.ecommerceapp.model.User
 import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
@@ -50,12 +51,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         profileViewModel.userLogName.observe(viewLifecycleOwner){
             if (it.isNotBlank()){
+
+                binding.progressBar.visibility = View.VISIBLE
                 userViewModel.getUserByName(profileViewModel.userLogName.value.toString())?.observe(viewLifecycleOwner){ user ->
-                    if (user != null) {
+                    user?.let {
                         initProfileMainUI(user)
-                    } else {
-                        Log.w("Account Error","Gagal memuat akun")
-                    }
+                    } ?: Log.w("Account Error","Gagal memuat akun")
                 }
             } else {
                 initProfileLogin()
@@ -88,6 +89,12 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             }
             it.findNavController().navigate(R.id.action_profileFragment_to_topUpFragment,bundle)
         }
+        binding.buttonLogout.setOnClickListener {
+            lifecycleScope.launch {
+                clearLoginInfo(requireContext())
+                Toast.makeText(context, "Anda Berhasil Logout", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     private fun initProfileLogin() {
@@ -98,21 +105,24 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             textViewProfileBalance.visibility = View.GONE
             buttonProfileAddItem.visibility = View.GONE
             buttonTopupSaldo.visibility = View.GONE
+            buttonLogout.visibility = View.GONE
             buttonLogin.visibility = View.VISIBLE
         }
     }
 
     private fun initProfileMainUI(user:User){
         binding.apply {
+            textViewProfileName.text = user.username
+            textViewProfileBalance.text = user.saldo.toString()
             imageViewProfilePic.visibility = View.VISIBLE
             textViewProfileName.visibility = View.VISIBLE
             textViewProfileName.visibility = View.VISIBLE
             textViewProfileBalance.visibility = View.VISIBLE
             buttonProfileAddItem.visibility = View.VISIBLE
             buttonTopupSaldo.visibility = View.VISIBLE
+            buttonLogout.visibility = View.VISIBLE
             buttonLogin.visibility = View.GONE
-            textViewProfileName.text = user.username
-            textViewProfileBalance.text = user.saldo.toString()
+            binding.progressBar.visibility = View.GONE
         }
     }
 
