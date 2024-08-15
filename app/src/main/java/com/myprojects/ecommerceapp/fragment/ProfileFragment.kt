@@ -40,8 +40,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         super.onViewCreated(view, savedInstanceState)
         userViewModel = (activity as MainActivity).userViewModel
 
-        addItemButton()
-        registerButton()
+        setupButtons()
 
         val profileViewModelFactory = ProfileViewModelFactory(userViewModel,viewLifecycleOwner)
         profileViewModel = ViewModelProvider(this,profileViewModelFactory)
@@ -72,15 +71,22 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
     }
 
-    fun addItemButton(){
-        binding.buttonProfileAddItem.setOnClickListener{
-            it.findNavController().navigate(R.id.action_profileFragment_to_newItemFragment)
-        }
+    fun navigateTo(destinationId: Int) {
+        binding.root.findNavController().navigate(destinationId)
     }
 
-    fun registerButton(){
-        binding.buttonLogin.setOnClickListener{
-            it.findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
+    fun setupButtons() {
+        binding.buttonProfileAddItem.setOnClickListener {
+            navigateTo(R.id.action_profileFragment_to_newItemFragment)
+        }
+        binding.buttonLogin.setOnClickListener {
+            navigateTo(R.id.action_profileFragment_to_loginFragment)
+        }
+        binding.buttonTopupSaldo.setOnClickListener {
+            val bundle = Bundle().apply {
+                putString("username",profileViewModel.userLogName.value)
+            }
+            it.findNavController().navigate(R.id.action_profileFragment_to_topUpFragment,bundle)
         }
     }
 
@@ -91,6 +97,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             textViewProfileName.visibility = View.GONE
             textViewProfileBalance.visibility = View.GONE
             buttonProfileAddItem.visibility = View.GONE
+            buttonTopupSaldo.visibility = View.GONE
             buttonLogin.visibility = View.VISIBLE
         }
     }
@@ -102,6 +109,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             textViewProfileName.visibility = View.VISIBLE
             textViewProfileBalance.visibility = View.VISIBLE
             buttonProfileAddItem.visibility = View.VISIBLE
+            buttonTopupSaldo.visibility = View.VISIBLE
             buttonLogin.visibility = View.GONE
             textViewProfileName.text = user.username
             textViewProfileBalance.text = user.saldo.toString()
