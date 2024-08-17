@@ -14,12 +14,21 @@ import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.databinding.FragmentProfileBinding
 import com.myprojects.ecommerceapp.getLoginInfo
 import com.myprojects.ecommerceapp.model.User
+import com.myprojects.ecommerceapp.repository.AppRepository
 
-class ProfileViewModel():ViewModel() {
+class ProfileViewModel(private val appRepository: AppRepository):ViewModel() {
     private var _userLogId = MutableLiveData<Int>()
     val userLogId: LiveData<Int> get() = _userLogId
 
+    private var _userNow = MutableLiveData<User>()
+    val userNow: LiveData<User> get() = _userNow
+
     fun setUserLogged(value : Int){
         _userLogId.value = value
+    }
+
+    fun setUser(): LiveData<User> {
+        _userNow.value = appRepository.getUserById(userLogId.value!!)?.value
+        return userNow
     }
 }

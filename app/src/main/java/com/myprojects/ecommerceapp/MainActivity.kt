@@ -12,12 +12,15 @@ import com.myprojects.ecommerceapp.databinding.ActivityMainBinding
 import com.myprojects.ecommerceapp.repository.AppRepository
 import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.AppViewModelFactory
+import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
+import com.myprojects.ecommerceapp.viewmodel.ProfileViewModelFactory
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var appViewModel: AppViewModel
+    lateinit var profileViewModel: ProfileViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +46,9 @@ class MainActivity : AppCompatActivity() {
         val repository = AppRepository(AppDatabase(this))
 
         val viewModelProviderFactory = AppViewModelFactory(application,repository)
+        val profileViewModelFactory = ProfileViewModelFactory(repository)
 
         appViewModel = ViewModelProvider(this,viewModelProviderFactory).get(AppViewModel::class.java)
+        profileViewModel = ViewModelProvider(this,profileViewModelFactory).get(ProfileViewModel::class.java)
     }
 }

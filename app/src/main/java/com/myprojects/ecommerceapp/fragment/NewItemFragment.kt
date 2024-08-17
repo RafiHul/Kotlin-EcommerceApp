@@ -16,6 +16,7 @@ import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.databinding.FragmentNewItemBinding
 import com.myprojects.ecommerceapp.model.Item
 import com.myprojects.ecommerceapp.viewmodel.AppViewModel
+import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
 import kotlinx.coroutines.launch
 
 class NewItemFragment : Fragment(R.layout.fragment_new_item) {
@@ -24,7 +25,7 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
     private val binding get() = _binding!!
 
     lateinit var appViewModel: AppViewModel
-    lateinit var myView: View
+    lateinit var profileViewModel: ProfileViewModel
     var userid : Int = -1
 
     lateinit var navController : NavController
@@ -40,17 +41,19 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         appViewModel = (activity as MainActivity).appViewModel
-        myView = view
+        profileViewModel = (activity as MainActivity).profileViewModel
         navController = findNavController()
+        userid = profileViewModel.userLogId.value!!
+
+        setupButton()
+    }
+
+    private fun setupButton() {
         binding.buttonSave.setOnClickListener{
             saveItem()
         }
-        lifecycleScope.launch {
-            appViewModel.getLoginData(requireContext()).collect{
-                userid = it
-            }
-        }
     }
+
 
     private fun saveItem() {
         val judulItem = binding.editTextJudul.text.toString().trim()

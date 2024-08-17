@@ -27,6 +27,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     lateinit var profileViewModel: ProfileViewModel
     lateinit var appViewModel: AppViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,16 +40,13 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         appViewModel = (activity as MainActivity).appViewModel
+        profileViewModel = (activity as MainActivity).profileViewModel
 
         setupButtons()
-
-        profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
-
         isUserLogged()
 
         profileViewModel.userLogId.observe(viewLifecycleOwner){
             if (it != -1){
-
                 binding.progressBar.visibility = View.VISIBLE
                 appViewModel.getUserById(profileViewModel.userLogId.value!!)?.observe(viewLifecycleOwner){ user ->
                     user?.let {
