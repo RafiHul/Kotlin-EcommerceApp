@@ -41,9 +41,9 @@ class TopUpFragment : Fragment(R.layout.fragment_top_up) {
     }
 
     private fun SetSaldo() {
-        val namaUser = arguments?.getString("username")
+        val idUser = arguments?.getInt("id")
 
-        userViewModel.getUserByName(namaUser.toString())?.observe(viewLifecycleOwner){
+        userViewModel.getUserById(idUser!!)?.observe(viewLifecycleOwner){ //kalo ada error pas topup
             it?.let{
                 topUpSaldoViewModel.setSaldoSaatIni(it.saldo)
                 userData = it

@@ -16,10 +16,10 @@ import com.myprojects.ecommerceapp.getLoginInfo
 import com.myprojects.ecommerceapp.model.User
 
 class ProfileViewModel(val userViewModel: UserViewModel,val viewLifeCycleOwner: LifecycleOwner):ViewModel() {
-    private var _userLogName = MutableLiveData<String>()
-    val userLogName: LiveData<String> get() = _userLogName
+    private var _userLogId = MutableLiveData<Int>()
+    val userLogId: LiveData<Int> get() = _userLogId
 
-    fun setUserLogged(value : String){
-        _userLogName.value = value
+    fun setUserLogged(value : Int){
+        _userLogId.value = value
     }
 }

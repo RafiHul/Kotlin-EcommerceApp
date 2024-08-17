@@ -49,14 +49,14 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
         isUserLogged()
 
-        profileViewModel.userLogName.observe(viewLifecycleOwner){
-            if (it.isNotBlank()){
+        profileViewModel.userLogId.observe(viewLifecycleOwner){
+            if (it != -1){
 
                 binding.progressBar.visibility = View.VISIBLE
-                userViewModel.getUserByName(profileViewModel.userLogName.value.toString())?.observe(viewLifecycleOwner){ user ->
+                userViewModel.getUserById(profileViewModel.userLogId.value!!)?.observe(viewLifecycleOwner){ user ->
                     user?.let {
                         initProfileMainUI(user)
-                    } ?: Log.w("Account Error","Gagal memuat akun")
+                    } ?: Toast.makeText(context, "Account Error", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 initProfileLogin()
@@ -67,7 +67,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private fun isUserLogged() {
         lifecycleScope.launch {
             userViewModel.getLoginData(requireContext()).collect{
-                profileViewModel.setUserLogged(it.toString())
+                profileViewModel.setUserLogged(it)
             }
         }
     }
@@ -85,7 +85,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         }
         binding.buttonTopupSaldo.setOnClickListener {
             val bundle = Bundle().apply {
-                putString("username",profileViewModel.userLogName.value)
+                putInt("id",profileViewModel.userLogId.value!!) //kalo ada error pas topup
             }
             it.findNavController().navigate(R.id.action_profileFragment_to_topUpFragment,bundle)
         }

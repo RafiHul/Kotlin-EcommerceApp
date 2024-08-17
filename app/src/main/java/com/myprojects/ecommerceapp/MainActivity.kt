@@ -55,9 +55,9 @@ class MainActivity : AppCompatActivity() {
         SetUpViewModel()
         SetUpUserViewModel()
 
-        lifecycleScope.launch {
-            clearLoginInfo(this@MainActivity)
-        }
+//        lifecycleScope.launch {
+//            clearLoginInfo(this@MainActivity)
+//        }
 
     }
 

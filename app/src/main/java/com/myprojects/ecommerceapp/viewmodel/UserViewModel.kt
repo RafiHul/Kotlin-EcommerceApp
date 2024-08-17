@@ -24,8 +24,8 @@ class UserViewModel(app: Application,
     }
 
 
-    fun saveLoginData(context: Context,username: String) = viewModelScope.launch {
-        repository.saveLoginData(context,username)
+    fun saveLoginData(context: Context,id: Int) = viewModelScope.launch {
+        repository.saveLoginData(context,id)
     }
 
 

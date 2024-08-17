@@ -10,7 +10,7 @@ class UserRepository(val db: UserDatabase) {
     suspend fun registerUsers(user:User) = db.getUserDao().RegisterUser(user)
     suspend fun updateUsers(user:User) = db.getUserDao().UpdateUser(user)
     suspend fun deleteUsers(user:User) = db.getUserDao().DeleteUser(user)
-    suspend fun saveLoginData(context: Context,username: String) = saveLoginInfo(context,username)
+    suspend fun saveLoginData(context: Context,id: Int) = saveLoginInfo(context,id)
 
 
     fun login(username:String,password:String) = db.getUserDao().Login(username,password)

@@ -15,7 +15,9 @@ import com.myprojects.ecommerceapp.MainActivity
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.databinding.FragmentNewItemBinding
 import com.myprojects.ecommerceapp.model.Item
+import com.myprojects.ecommerceapp.model.User
 import com.myprojects.ecommerceapp.viewmodel.ItemViewModel
+import com.myprojects.ecommerceapp.viewmodel.UserViewModel
 
 class NewItemFragment : Fragment(R.layout.fragment_new_item) {
 
@@ -24,6 +26,8 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
 
     lateinit var itemViewModel: ItemViewModel
     lateinit var myView: View
+    lateinit var userViewModel: UserViewModel
+    var userid : Int = -1
 
     lateinit var navController : NavController
     override fun onCreateView(
@@ -41,8 +45,10 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         itemViewModel = (activity as MainActivity).itemViewModel
+        userViewModel = (activity as MainActivity).userViewModel
         myView = view
         navController = findNavController()
+        userid = userViewModel.getLoginData(requireContext()).toString().toInt()
     }
 
     private fun saveItem() {
@@ -52,7 +58,7 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
         if (judulItem.isEmpty() || hargaItem.isEmpty()){
             Toast.makeText(context, "TIdak Boleh Ada yang kosong", Toast.LENGTH_SHORT).show()
         } else {
-            itemViewModel.insertItems(Item(0,judulItem,hargaItem.toDouble(),"test"))
+            itemViewModel.insertItems(Item(0,judulItem,hargaItem.toDouble(),"test",userid))
             navController.navigate(R.id.action_newItemFragment_to_itemHomeFragment)
         }
     }
