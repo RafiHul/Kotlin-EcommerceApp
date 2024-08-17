@@ -64,7 +64,7 @@ class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
                 binding.buttonHapus.visibility = View.VISIBLE
                 binding.buttonBeli.visibility = View.GONE
                 binding.buttonHapus.setOnClickListener {
-                    deletenote()
+                    deleteItem()
                 }
             }
             "Buy" -> {
@@ -74,13 +74,15 @@ class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
                 binding.buttonHapus.visibility = View.GONE
                 binding.buttonBeli.visibility = View.VISIBLE
                 binding.buttonBeli.setOnClickListener {
-                    deletenote()
+                    if (userid == null || userid == -1){
+                        Toast.makeText(context, "Harap Login Terlebih Dahulu", Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
         }
     }
 
-    private fun deletenote(){
+    private fun deleteItem(){
         AlertDialog.Builder(requireContext()).apply {
             setTitle("Hapus Item ini")
             setMessage("Kamu yakin ingin menghapus item ini ?")

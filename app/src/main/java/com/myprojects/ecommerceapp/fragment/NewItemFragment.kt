@@ -26,9 +26,9 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
 
     lateinit var appViewModel: AppViewModel
     lateinit var profileViewModel: ProfileViewModel
+    lateinit var navController : NavController
     var userid : Int = -1
 
-    lateinit var navController : NavController
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -58,18 +58,18 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
     private fun saveItem() {
         val judulItem = binding.editTextJudul.text.toString().trim()
         val hargaItem = binding.editTextHarga.text.toString().trim()
+        val jumlahitem = binding.editTextJumlah.text.toString().toInt()
 
         if (judulItem.isEmpty() || hargaItem.isEmpty()){
             Toast.makeText(context, "TIdak Boleh Ada yang kosong", Toast.LENGTH_SHORT).show()
         } else {
-            appViewModel.insertItems(Item(0,judulItem,hargaItem.toDouble(),"test",userid))
+            appViewModel.insertItems(Item(0,judulItem,hargaItem.toDouble(),"test",jumlahitem,userid))
             navController.navigate(R.id.action_newItemFragment_to_itemHomeFragment)
         }
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
         requireActivity().onBackPressedDispatcher.addCallback{
             if (navController.currentDestination?.id == R.id.profileFragment){
                 navController.navigate(R.id.action_newItemFragment_to_profileFragment)

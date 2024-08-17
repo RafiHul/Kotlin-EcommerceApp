@@ -87,6 +87,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
         binding.buttonLogout.setOnClickListener {
             lifecycleScope.launch {
                 clearLoginInfo(requireContext())
+                profileViewModel.setUserLogged(-1)
                 Toast.makeText(context, "Anda Berhasil Logout", Toast.LENGTH_SHORT).show()
             }
         }
