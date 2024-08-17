@@ -17,6 +17,7 @@ import com.myprojects.ecommerceapp.model.Item
 import com.myprojects.ecommerceapp.model.User
 import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
+import com.myprojects.ecommerceapp.DialogQuantityFragment
 import kotlinx.coroutines.launch
 
 class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
@@ -76,10 +77,17 @@ class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
                 binding.buttonBeli.setOnClickListener {
                     if (userid == null || userid == -1){
                         Toast.makeText(context, "Harap Login Terlebih Dahulu", Toast.LENGTH_SHORT).show()
+                    } else {
+                        showDialogQuantity()
                     }
                 }
             }
         }
+    }
+
+    private fun showDialogQuantity() {
+        val dialog = DialogQuantityFragment.newInstance(currentItem.quantity)
+        dialog.show(parentFragmentManager,"Tes dialog",)
     }
 
     private fun deleteItem(){
