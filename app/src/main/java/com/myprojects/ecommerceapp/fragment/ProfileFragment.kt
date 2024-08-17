@@ -15,9 +15,8 @@ import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.clearLoginInfo
 import com.myprojects.ecommerceapp.databinding.FragmentProfileBinding
 import com.myprojects.ecommerceapp.model.User
+import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
-import com.myprojects.ecommerceapp.viewmodel.ProfileViewModelFactory
-import com.myprojects.ecommerceapp.viewmodel.UserViewModel
 import kotlinx.coroutines.launch
 import kotlin.math.log
 
@@ -27,7 +26,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private val binding get() = _binding!!
 
     lateinit var profileViewModel: ProfileViewModel
-    lateinit var userViewModel: UserViewModel
+    lateinit var appViewModel: AppViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,13 +38,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        userViewModel = (activity as MainActivity).userViewModel
+        appViewModel = (activity as MainActivity).appViewModel
 
         setupButtons()
 
-        val profileViewModelFactory = ProfileViewModelFactory(userViewModel,viewLifecycleOwner)
-        profileViewModel = ViewModelProvider(this,profileViewModelFactory)
-            .get(ProfileViewModel::class.java)
+        profileViewModel = ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         isUserLogged()
 
@@ -53,7 +50,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             if (it != -1){
 
                 binding.progressBar.visibility = View.VISIBLE
-                userViewModel.getUserById(profileViewModel.userLogId.value!!)?.observe(viewLifecycleOwner){ user ->
+                appViewModel.getUserById(profileViewModel.userLogId.value!!)?.observe(viewLifecycleOwner){ user ->
                     user?.let {
                         initProfileMainUI(user)
                     } ?: Toast.makeText(context, "Account Error", Toast.LENGTH_SHORT).show()
@@ -66,7 +63,7 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     private fun isUserLogged() {
         lifecycleScope.launch {
-            userViewModel.getLoginData(requireContext()).collect{
+            appViewModel.getLoginData(requireContext()).collect{
                 profileViewModel.setUserLogged(it)
             }
         }

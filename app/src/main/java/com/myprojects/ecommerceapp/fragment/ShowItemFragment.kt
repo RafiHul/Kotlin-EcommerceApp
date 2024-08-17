@@ -12,7 +12,7 @@ import com.myprojects.ecommerceapp.MainActivity
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.databinding.FragmentShowItemBinding
 import com.myprojects.ecommerceapp.model.Item
-import com.myprojects.ecommerceapp.viewmodel.ItemViewModel
+import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 
 class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
 
@@ -21,7 +21,7 @@ class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
     private val args: ShowItemFragmentArgs by navArgs()
 
     lateinit var currentItem: Item
-    lateinit var itemsViewModel: ItemViewModel
+    lateinit var appViewModel: AppViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,7 +35,7 @@ class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        itemsViewModel = (activity as MainActivity).itemViewModel
+        appViewModel = (activity as MainActivity).appViewModel
         currentItem = args.item!!
         initViews()
     }
@@ -55,7 +55,7 @@ class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
             setTitle("Hapus Item ini")
             setMessage("Kamu yakin ingin menghapus item ini ?")
             setPositiveButton("Hapus"){_,_ ->
-                itemsViewModel.deleteItems(currentItem)
+                appViewModel.deleteItems(currentItem)
                 view?.findNavController()?.navigate(R.id.action_showItemFragment_to_itemHomeFragment)
             }
             setNegativeButton("TIdak",null)

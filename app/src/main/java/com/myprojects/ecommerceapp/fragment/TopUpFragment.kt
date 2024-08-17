@@ -13,15 +13,15 @@ import com.myprojects.ecommerceapp.MainActivity
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.databinding.FragmentTopUpBinding
 import com.myprojects.ecommerceapp.model.User
+import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.TopUpSaldoViewModel
-import com.myprojects.ecommerceapp.viewmodel.UserViewModel
 
 class TopUpFragment : Fragment(R.layout.fragment_top_up) {
     private var _binding: FragmentTopUpBinding? = null
     private val binding get() = _binding!!
 
     lateinit var topUpSaldoViewModel: TopUpSaldoViewModel
-    lateinit var userViewModel: UserViewModel
+    lateinit var appViewModel: AppViewModel
     lateinit var userData: User
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +43,7 @@ class TopUpFragment : Fragment(R.layout.fragment_top_up) {
     private fun SetSaldo() {
         val idUser = arguments?.getInt("id")
 
-        userViewModel.getUserById(idUser!!)?.observe(viewLifecycleOwner){ //kalo ada error pas topup
+        appViewModel.getUserById(idUser!!)?.observe(viewLifecycleOwner){ //kalo ada error pas topup
             it?.let{
                 topUpSaldoViewModel.setSaldoSaatIni(it.saldo)
                 userData = it
@@ -53,7 +53,7 @@ class TopUpFragment : Fragment(R.layout.fragment_top_up) {
 
     private fun setUpViewModel() {
         topUpSaldoViewModel = ViewModelProvider(this).get(TopUpSaldoViewModel::class.java)
-        userViewModel = (activity as MainActivity).userViewModel
+        appViewModel = (activity as MainActivity).appViewModel
     }
 
     private fun topUpButton() {
@@ -62,7 +62,7 @@ class TopUpFragment : Fragment(R.layout.fragment_top_up) {
             if (nominal.isEmpty()){
                 binding.editTextNumberDecimalTopupSaldo.error = "Nominal harus diisi"
             } else {
-                userViewModel.updateUser(User(userData.id, userData.username, userData.password, userData.saldo + nominal.toInt()))
+                appViewModel.updateUser(User(userData.id, userData.username, userData.password, userData.saldo + nominal.toInt()))
                 Toast.makeText(context, "Berhasil Menambahkan Saldo", Toast.LENGTH_SHORT).show()
                 it.findNavController().navigate(R.id.action_topUpFragment_to_profileFragment)
             }

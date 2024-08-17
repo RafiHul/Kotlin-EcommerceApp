@@ -10,7 +10,7 @@ import com.myprojects.ecommerceapp.MainActivity
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.adapter.ItemAdapter
 import com.myprojects.ecommerceapp.databinding.FragmentItemHomeBinding
-import com.myprojects.ecommerceapp.viewmodel.ItemViewModel
+import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 
 
 class ItemHomeFragment : Fragment(R.layout.fragment_item_home) {
@@ -19,7 +19,7 @@ class ItemHomeFragment : Fragment(R.layout.fragment_item_home) {
     private val binding get() = _binding!!
 
     lateinit var itemAdapter: ItemAdapter
-    lateinit var itemsViewModel: ItemViewModel
+    lateinit var appViewModel: AppViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +33,7 @@ class ItemHomeFragment : Fragment(R.layout.fragment_item_home) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         itemAdapter = ItemAdapter()
-        itemsViewModel = (activity as MainActivity).itemViewModel
+        appViewModel = (activity as MainActivity).appViewModel
         setUpRecyclerView()
     }
 
@@ -43,7 +43,7 @@ class ItemHomeFragment : Fragment(R.layout.fragment_item_home) {
             adapter = itemAdapter
         }
         activity.let {
-            itemsViewModel.getAllItems().observe(
+            appViewModel.getAllItems().observe(
                 viewLifecycleOwner, {
                     itemAdapter.differ.submitList(it)
                 }

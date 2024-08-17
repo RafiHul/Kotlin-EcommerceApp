@@ -8,25 +8,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.myprojects.ecommerceapp.MainActivity
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.databinding.FragmentNewItemBinding
 import com.myprojects.ecommerceapp.model.Item
-import com.myprojects.ecommerceapp.model.User
-import com.myprojects.ecommerceapp.viewmodel.ItemViewModel
-import com.myprojects.ecommerceapp.viewmodel.UserViewModel
+import com.myprojects.ecommerceapp.viewmodel.AppViewModel
+import kotlinx.coroutines.launch
 
 class NewItemFragment : Fragment(R.layout.fragment_new_item) {
 
     private var _binding: FragmentNewItemBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var itemViewModel: ItemViewModel
+    lateinit var appViewModel: AppViewModel
     lateinit var myView: View
-    lateinit var userViewModel: UserViewModel
     var userid : Int = -1
 
     lateinit var navController : NavController
@@ -36,19 +34,22 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentNewItemBinding.inflate(inflater,container,false)
-        binding.buttonSave.setOnClickListener{
-            saveItem()
-        }
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        itemViewModel = (activity as MainActivity).itemViewModel
-        userViewModel = (activity as MainActivity).userViewModel
+        appViewModel = (activity as MainActivity).appViewModel
         myView = view
         navController = findNavController()
-        userid = userViewModel.getLoginData(requireContext()).toString().toInt()
+        binding.buttonSave.setOnClickListener{
+            saveItem()
+        }
+        lifecycleScope.launch {
+            appViewModel.getLoginData(requireContext()).collect{
+                userid = it
+            }
+        }
     }
 
     private fun saveItem() {
@@ -58,7 +59,7 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
         if (judulItem.isEmpty() || hargaItem.isEmpty()){
             Toast.makeText(context, "TIdak Boleh Ada yang kosong", Toast.LENGTH_SHORT).show()
         } else {
-            itemViewModel.insertItems(Item(0,judulItem,hargaItem.toDouble(),"test",userid))
+            appViewModel.insertItems(Item(0,judulItem,hargaItem.toDouble(),"test",userid))
             navController.navigate(R.id.action_newItemFragment_to_itemHomeFragment)
         }
     }

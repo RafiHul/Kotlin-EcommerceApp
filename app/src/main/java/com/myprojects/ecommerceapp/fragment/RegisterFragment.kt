@@ -16,7 +16,7 @@ import com.myprojects.ecommerceapp.MainActivity
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.databinding.FragmentRegisterBinding
 import com.myprojects.ecommerceapp.model.User
-import com.myprojects.ecommerceapp.viewmodel.UserViewModel
+import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 
 class RegisterFragment : Fragment(R.layout.fragment_register) {
 
@@ -24,7 +24,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     private val binding get() = _binding!!
 
     lateinit var navController: NavController
-    lateinit var userViewModel: UserViewModel
+    lateinit var appViewModel: AppViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -39,7 +39,7 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         navController = findNavController()
-        userViewModel = (activity as MainActivity).userViewModel
+        appViewModel = (activity as MainActivity).appViewModel
     }
 
     private fun clickbutton(){
@@ -57,12 +57,12 @@ class RegisterFragment : Fragment(R.layout.fragment_register) {
         val nameField = binding.editTextRegNama.text.toString().trim()
         val passwordField = binding.editTextRegPassword.text.toString().trim()
 
-        userViewModel.checkExitsUser().observe(viewLifecycleOwner) {
+        appViewModel.checkExitsUser().observe(viewLifecycleOwner) {
             if (it.contains(nameField)) {
                 Toast.makeText(context, "UserName Ini Sudah Ada", Toast.LENGTH_SHORT).show()
             } else {
                 Log.d("RegisterFragment", "Name: $nameField, Password: $passwordField")
-                userViewModel.registerUser(User(0,nameField,passwordField,100))
+                appViewModel.registerUser(User(0,nameField,passwordField,100))
                 navController.navigate(R.id.action_registerFragment_to_loginFragment)
                 Toast.makeText(context, "Berhasil Registrasi Akun", Toast.LENGTH_SHORT).show()
             }

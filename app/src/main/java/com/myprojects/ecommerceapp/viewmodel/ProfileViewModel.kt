@@ -15,7 +15,7 @@ import com.myprojects.ecommerceapp.databinding.FragmentProfileBinding
 import com.myprojects.ecommerceapp.getLoginInfo
 import com.myprojects.ecommerceapp.model.User
 
-class ProfileViewModel(val userViewModel: UserViewModel,val viewLifeCycleOwner: LifecycleOwner):ViewModel() {
+class ProfileViewModel():ViewModel() {
     private var _userLogId = MutableLiveData<Int>()
     val userLogId: LiveData<Int> get() = _userLogId
 
