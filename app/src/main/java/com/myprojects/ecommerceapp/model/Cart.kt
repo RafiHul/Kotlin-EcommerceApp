@@ -12,6 +12,6 @@ data class Cart(
     val id : Int,
     val itemId: Int,
     var quantity: Int,
-    var price: Double,
+    var totalPrice: Double,
     val userId: Int
 ): Parcelable

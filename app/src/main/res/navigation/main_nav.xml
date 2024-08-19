@@ -15,6 +15,9 @@
         <action
             android:id="@+id/action_itemHomeFragment_to_showItemFragment"
             app:destination="@id/showItemFragment" />
+        <action
+            android:id="@+id/action_itemHomeFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -36,6 +39,9 @@
         <action
             android:id="@+id/action_profileFragment_to_topUpFragment"
             app:destination="@id/topUpFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_cartFragment"
+            app:destination="@id/cartFragment" />
     </fragment>
     <fragment
         android:id="@+id/newItemFragment"
@@ -100,5 +106,20 @@
         <action
             android:id="@+id/action_topUpFragment_to_itemHomeFragment"
             app:destination="@id/itemHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.myprojects.ecommerceapp.fragment.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" >
+        <action
+            android:id="@+id/action_cartFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_itemHomeFragment"
+            app:destination="@id/itemHomeFragment" />
+        <action
+            android:id="@+id/action_cartFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
     </fragment>
 </navigation>

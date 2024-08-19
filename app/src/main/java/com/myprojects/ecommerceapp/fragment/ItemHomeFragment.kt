@@ -43,11 +43,9 @@ class ItemHomeFragment : Fragment(R.layout.fragment_item_home) {
             adapter = itemAdapter
         }
         activity.let {
-            appViewModel.getAllItems().observe(
-                viewLifecycleOwner, {
+            appViewModel.getAllItems().observe(viewLifecycleOwner) {
                     itemAdapter.differ.submitList(it)
-                }
-            )
+            }
         }
     }
 

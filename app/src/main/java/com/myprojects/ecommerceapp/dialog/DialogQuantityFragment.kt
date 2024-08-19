@@ -40,7 +40,17 @@ class DialogQuantityFragment : DialogFragment() {
         binding.buttonClose.setOnClickListener {
             dismiss()
         }
+        binding.buttonBuy.setOnClickListener {
+            buyButton()
+        }
         inputQuantityListener()
+    }
+
+    private fun buyButton() {
+        val userInputQuantity = binding.editTextInputQuantity.text.toString()
+        if (userInputQuantity.isNotEmpty()){
+
+        }
     }
 
     private fun inputQuantityListener() {
