@@ -15,5 +15,6 @@ data class Item (
     val nameItem:String,
     val price:Double,
     val description:String,
+    val quantity:Int,
     val owner_id:Int
 ): Parcelable

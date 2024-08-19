@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:background="@drawable/rounded_corners"
     android:gravity="center"
-    tools:context=".DialogQuantityFragment">
+    tools:context=".dialog.DialogQuantityFragment">
 
     <TextView
         android:id="@+id/textViewId"
@@ -33,7 +33,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="40dp"
-        android:text="TextView"
+        android:text="0"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/textViewJumlah"
         app:layout_constraintStart_toEndOf="@+id/textViewId"

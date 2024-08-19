@@ -7,18 +7,15 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.myprojects.ecommerceapp.MainActivity
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.databinding.FragmentShowItemBinding
 import com.myprojects.ecommerceapp.model.Item
-import com.myprojects.ecommerceapp.model.User
 import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
-import com.myprojects.ecommerceapp.DialogQuantityFragment
-import kotlinx.coroutines.launch
+import com.myprojects.ecommerceapp.dialog.DialogQuantityFragment
 
 class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
 
@@ -86,7 +83,7 @@ class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
     }
 
     private fun showDialogQuantity() {
-        val dialog = DialogQuantityFragment.newInstance(currentItem.quantity)
+        val dialog = DialogQuantityFragment.newInstance(currentItem)
         dialog.show(parentFragmentManager,"Tes dialog",)
     }
 
