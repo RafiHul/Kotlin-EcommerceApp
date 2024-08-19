@@ -7,11 +7,16 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
+import com.myprojects.ecommerceapp.MainActivity
 import com.myprojects.ecommerceapp.databinding.FragmentDialogQuantityBinding
+import com.myprojects.ecommerceapp.model.Cart
 import com.myprojects.ecommerceapp.model.Item
 import com.myprojects.ecommerceapp.model.User
+import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.DialogQuantityViewModel
+import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
 
 class DialogQuantityFragment : DialogFragment() {
     private var _binding : FragmentDialogQuantityBinding? = null
@@ -19,6 +24,9 @@ class DialogQuantityFragment : DialogFragment() {
 
     lateinit var dialogQuantityViewModel : DialogQuantityViewModel
     lateinit var currentItem : Item
+    lateinit var appViewModel: AppViewModel
+    lateinit var userid : LiveData<Int>
+    lateinit var profileViewModel: ProfileViewModel
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -48,8 +56,10 @@ class DialogQuantityFragment : DialogFragment() {
 
     private fun buyButton() {
         val userInputQuantity = binding.editTextInputQuantity.text.toString()
+        val totalPrice = binding.textViewHarga.text.toString().toDouble()
         if (userInputQuantity.isNotEmpty()){
-
+            appViewModel.insertCart(Cart(0,currentItem.id,userInputQuantity.toInt(),totalPrice,userid.value!!))
+            Toast.makeText(context, "Item Di Taruh Di Keranjang", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -69,6 +79,9 @@ class DialogQuantityFragment : DialogFragment() {
 
     private fun setUpArguments() {
         dialogQuantityViewModel = ViewModelProvider(this).get(DialogQuantityViewModel::class.java)
+        appViewModel = (activity as MainActivity).appViewModel
+        profileViewModel = (activity as MainActivity).profileViewModel
+        userid = profileViewModel.userLogId
         val args = arguments
         val itemDat: Item? = args?.getParcelable("ItemDat")
         currentItem = itemDat!!
