@@ -4,14 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.myprojects.ecommerceapp.model.Cart
 import com.myprojects.ecommerceapp.model.Item
 import com.myprojects.ecommerceapp.model.User
 
-@Database(entities = [Item::class, User::class], version = 1)
+@Database(entities = [Item::class, User::class,Cart::class], version = 1)
 abstract class AppDatabase:RoomDatabase(){
 
     abstract fun getItemDao():ItemDAO
     abstract fun getUserDao(): UserDAO
+    abstract fun getCartDao():CartDao
 
     companion object{
         @Volatile

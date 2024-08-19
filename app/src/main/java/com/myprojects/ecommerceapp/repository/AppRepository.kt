@@ -3,6 +3,7 @@ package com.myprojects.ecommerceapp.repository
 import android.content.Context
 import com.myprojects.ecommerceapp.database.AppDatabase
 import com.myprojects.ecommerceapp.getLoginInfo
+import com.myprojects.ecommerceapp.model.Cart
 import com.myprojects.ecommerceapp.model.Item
 import com.myprojects.ecommerceapp.model.User
 import com.myprojects.ecommerceapp.saveLoginInfo
@@ -17,6 +18,10 @@ class AppRepository(private val db: AppDatabase) {
     suspend fun updateUsers(user: User) = db.getUserDao().UpdateUser(user)
     suspend fun deleteUsers(user: User) = db.getUserDao().DeleteUser(user)
     suspend fun saveLoginData(context: Context, id: Int) = saveLoginInfo(context,id)
+    //For Carts
+    suspend fun insertCarts(cart: Cart) = db.getCartDao().InsertCart(cart)
+    suspend fun updateCarts(cart: Cart) = db.getCartDao().UpdateCart(cart)
+    suspend fun deleteCarts(cart: Cart) = db.getCartDao().DeleteCart(cart)
 
     // For Items
     fun getAllItems() = db.getItemDao().GetAllItems()
@@ -28,4 +33,6 @@ class AppRepository(private val db: AppDatabase) {
     fun getUserByName(query: String) = db.getUserDao().GetUserByName(query)
     fun getUserById(query: Int) = db.getUserDao().GetUserById(query)
     fun checkExistUser() = db.getUserDao().CheckUserExist()
+    //For Carts
+    fun getCartUser(userid: Int) = db.getCartDao().getCartUser(userid)
 }

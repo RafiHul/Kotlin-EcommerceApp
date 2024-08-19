@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.myprojects.ecommerceapp.model.Cart
 import com.myprojects.ecommerceapp.model.Item
 import com.myprojects.ecommerceapp.model.User
 import com.myprojects.ecommerceapp.repository.AppRepository
@@ -35,6 +36,16 @@ class AppViewModel(private val app: Application,
         fun saveLoginData(context: Context, id: Int) = viewModelScope.launch {
             repository.saveLoginData(context,id)
         }
+        //For Cart
+        fun insertCart(cart: Cart) = viewModelScope.launch {
+        repository.deleteCarts(cart)
+        }
+        fun updateCart(cart: Cart) = viewModelScope.launch {
+            repository.deleteCarts(cart)
+        }
+        fun deleteCart(cart: Cart) = viewModelScope.launch {
+            repository.deleteCarts(cart)
+        }
 
         //For Items
         fun getAllItems() = repository.getAllItems()
@@ -46,4 +57,6 @@ class AppViewModel(private val app: Application,
         fun getUserByName(query:String) = repository.getUserByName(query)
         fun getUserById(id:Int) = repository.getUserById(id)
         fun checkExitsUser() = repository.checkExistUser()
+        //For Cart
+        fun getCartUser(userid: Int) = repository.getCartUser(userid)
 }
