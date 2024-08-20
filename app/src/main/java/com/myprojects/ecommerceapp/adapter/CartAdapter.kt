@@ -11,7 +11,7 @@ import com.myprojects.ecommerceapp.database.CartDao
 import com.myprojects.ecommerceapp.databinding.CartViewBinding
 import com.myprojects.ecommerceapp.model.Cart
 
-class CartAdapter:RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
+class CartAdapter(private val clickListener : (CartDao.CartWithItemAndUser) -> Unit):RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
 
     inner class MyViewHolder(val cartBinding:CartViewBinding):RecyclerView.ViewHolder(cartBinding.root){
 
@@ -40,13 +40,14 @@ class CartAdapter:RecyclerView.Adapter<CartAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
+        val currentList = differ.currentList[position]
         holder.cartBinding.apply {
-            textViewId.text = differ.currentList[position].cart.itemId.toString()
-            textViewNamaItem.text = differ.currentList[position].item.nameItem
-            textViewHargaTotal.text = differ.currentList[position].cart.totalPrice.toString()
-            textViewJumlahBeli.text = differ.currentList[position].cart.quantity.toString()
+            textViewId.text = currentList.cart.itemId.toString()
+            textViewNamaItem.text = currentList.item.nameItem
+            textViewHargaTotal.text = currentList.cart.totalPrice.toString()
+            textViewJumlahBeli.text = currentList.cart.quantity.toString()
             buttonBeli.setOnClickListener {
-                Log.d("RecyclerViewCart",differ.currentList[position].item.nameItem)
+                clickListener(currentList)
             }
         }
     }
