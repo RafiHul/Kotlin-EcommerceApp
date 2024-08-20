@@ -11,9 +11,8 @@ import android.widget.Toast
 import androidx.activity.addCallback
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
-import com.myprojects.ecommerceapp.MainActivity
+import com.myprojects.ecommerceapp.activity.MainActivity
 import com.myprojects.ecommerceapp.R
-import com.myprojects.ecommerceapp.dataStore
 import com.myprojects.ecommerceapp.databinding.FragmentLoginBinding
 import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 

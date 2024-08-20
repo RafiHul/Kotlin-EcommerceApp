@@ -9,7 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
-import com.myprojects.ecommerceapp.MainActivity
+import com.myprojects.ecommerceapp.activity.MainActivity
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.databinding.FragmentShowItemBinding
 import com.myprojects.ecommerceapp.model.Item

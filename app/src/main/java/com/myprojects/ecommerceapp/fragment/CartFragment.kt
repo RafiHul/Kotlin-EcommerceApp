@@ -6,11 +6,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.myprojects.ecommerceapp.MainActivity
+import com.myprojects.ecommerceapp.activity.MainActivity
 
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.adapter.CartAdapter
@@ -21,8 +20,6 @@ import com.myprojects.ecommerceapp.model.Item
 import com.myprojects.ecommerceapp.model.User
 import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
-import kotlinx.coroutines.flow.observeOn
-import kotlinx.coroutines.launch
 
 class CartFragment : Fragment(R.layout.fragment_cart) {
     private var _binding: FragmentCartBinding? = null
@@ -47,13 +44,8 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        appViewModel = (activity as MainActivity).appViewModel
-        cartAdapter = CartAdapter{
-            currentList = it
-            buyItemClick()
-        }
-        myNavController = findNavController()
-        profileViewModel = (activity as MainActivity).profileViewModel
+        setUpViewModel()
+
         profileViewModel.userLogId.value?.let {
             userid = it
             appViewModel.getUserById(it)?.observe(viewLifecycleOwner){ user ->
@@ -70,6 +62,16 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         } else {
             setUpRecyclerView()
         }
+    }
+
+    private fun setUpViewModel() {
+        appViewModel = (activity as MainActivity).appViewModel
+        cartAdapter = CartAdapter{
+            currentList = it
+            buyItemClick()
+        }
+        myNavController = findNavController()
+        profileViewModel = (activity as MainActivity).profileViewModel
     }
 
     private fun buyItemClick() {

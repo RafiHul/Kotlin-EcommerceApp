@@ -1,16 +1,14 @@
 package com.myprojects.ecommerceapp.fragment
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
-import com.myprojects.ecommerceapp.MainActivity
+import com.myprojects.ecommerceapp.activity.MainActivity
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.clearLoginInfo
 import com.myprojects.ecommerceapp.databinding.FragmentProfileBinding
@@ -18,7 +16,6 @@ import com.myprojects.ecommerceapp.model.User
 import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
 import kotlinx.coroutines.launch
-import kotlin.math.log
 
 class ProfileFragment : Fragment(R.layout.fragment_profile) {
 

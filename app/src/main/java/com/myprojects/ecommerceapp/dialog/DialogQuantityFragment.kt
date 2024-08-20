@@ -9,11 +9,10 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModelProvider
-import com.myprojects.ecommerceapp.MainActivity
+import com.myprojects.ecommerceapp.activity.MainActivity
 import com.myprojects.ecommerceapp.databinding.FragmentDialogQuantityBinding
 import com.myprojects.ecommerceapp.model.Cart
 import com.myprojects.ecommerceapp.model.Item
-import com.myprojects.ecommerceapp.model.User
 import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.DialogQuantityViewModel
 import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel

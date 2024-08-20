@@ -1,4 +1,4 @@
-package com.myprojects.ecommerceapp
+package com.myprojects.ecommerceapp.activity
 
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
+import com.myprojects.ecommerceapp.R
+import com.myprojects.ecommerceapp.clearLoginInfo
 import com.myprojects.ecommerceapp.database.AppDatabase
 import com.myprojects.ecommerceapp.databinding.ActivityMainBinding
 import com.myprojects.ecommerceapp.repository.AppRepository
