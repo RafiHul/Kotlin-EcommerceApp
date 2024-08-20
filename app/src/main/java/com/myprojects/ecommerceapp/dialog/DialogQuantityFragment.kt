@@ -58,8 +58,16 @@ class DialogQuantityFragment : DialogFragment() {
         val userInputQuantity = binding.editTextInputQuantity.text.toString()
         val totalPrice = binding.textViewHarga.text.toString().toDouble()
         if (userInputQuantity.isNotEmpty()){
-            appViewModel.insertCart(Cart(0,currentItem.id,userInputQuantity.toInt(),totalPrice,userid.value!!))
-            Toast.makeText(context, "Item Di Taruh Di Keranjang", Toast.LENGTH_SHORT).show()
+            appViewModel.checkExistItemCart(currentItem.id)?.observe(viewLifecycleOwner){
+                if (it == null){
+                    appViewModel.insertCart(Cart(0,currentItem.id,userInputQuantity.toInt(),totalPrice,userid.value!!))
+                } else {
+                    appViewModel.updateCart(Cart(it.id,currentItem.id,userInputQuantity.toInt(),totalPrice,userid.value!!))
+                }
+                Toast.makeText(context, "Item Di Taruh Di Keranjang", Toast.LENGTH_SHORT).show()
+            }
+        } else {
+            Toast.makeText(context, "Jumlah Tidak Boleh Kosong", Toast.LENGTH_SHORT).show()
         }
     }
 
