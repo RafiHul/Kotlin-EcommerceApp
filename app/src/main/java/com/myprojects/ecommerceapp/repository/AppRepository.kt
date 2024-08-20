@@ -35,4 +35,5 @@ class AppRepository(private val db: AppDatabase) {
     fun checkExistUser() = db.getUserDao().CheckUserExist()
     //For Carts
     fun getCartUser(userid: Int) = db.getCartDao().getCartUser(userid)
+    fun checkExistItemCart(itemId: Int) = db.getCartDao().CheckExistItemCart(itemId)
 }

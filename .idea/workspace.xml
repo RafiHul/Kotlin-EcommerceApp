@@ -81,10 +81,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4805401-bf07-4e40-ad2e-f65b3e4de7aa" name="Changes" comment="change wrong function">
+    <list default="true" id="a4805401-bf07-4e40-ad2e-f65b3e4de7aa" name="Changes" comment="improve add cart button">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/adapter/CartAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/adapter/CartAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/CartFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/CartFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/CartDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/CartDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/repository/AppRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/repository/AppRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/AppViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/AppViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/ProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/ProfileViewModel.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,30 +169,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "PROJECT_TRUSTED_KEY": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/Rafihul/AndroidStudioProjects/NoteTakingApp",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "com.android.studio.ml.bot.mainConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;PROJECT_TRUSTED_KEY&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/Rafihul/AndroidStudioProjects/NoteTakingApp&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.android.studio.ml.bot.mainConfigurable&quot;
   },
-  "keyToStringList": {
-    "kotlin-gradle-user-dirs": [
-      "/home/Rafihul/.gradle"
+  &quot;keyToStringList&quot;: {
+    &quot;kotlin-gradle-user-dirs&quot;: [
+      &quot;/home/Rafihul/.gradle&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Signing Configs" />
     <option name="LAST_EDITED_SIGNING_CONFIG" value="debug" />
@@ -618,7 +620,23 @@
       <option name="project" value="LOCAL" />
       <updated>1724116423731</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="cart buy button">
+      <option name="closed" value="true" />
+      <created>1724123565915</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1724123565915</updated>
+    </task>
+    <task id="LOCAL-00044" summary="improve add cart button">
+      <option name="closed" value="true" />
+      <created>1724124872293</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1724124872293</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -633,8 +651,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add query getitemsbyid" />
-    <MESSAGE value="click home item and delete item" />
     <MESSAGE value="User Databases" />
     <MESSAGE value="login and register ui" />
     <MESSAGE value="login and register fragment" />
@@ -658,6 +674,8 @@
     <MESSAGE value="cart fragment" />
     <MESSAGE value="buy item button" />
     <MESSAGE value="change wrong function" />
-    <option name="LAST_COMMIT_MESSAGE" value="change wrong function" />
+    <MESSAGE value="cart buy button" />
+    <MESSAGE value="improve add cart button" />
+    <option name="LAST_COMMIT_MESSAGE" value="improve add cart button" />
   </component>
 </project>

@@ -22,6 +22,9 @@ interface CartDao {
     @Delete
     suspend fun DeleteCart(cart: Cart)
 
+    @Query("SELECT * FROM carts WHERE carts.itemId LIKE :itemId")
+    fun CheckExistItemCart(itemId: Int): LiveData<Cart>?
+
     @Query("SELECT items.*, carts.* FROM carts LEFT JOIN items ON carts.itemId = items.id WHERE carts.userId = :userId")
     fun getCartUser(userId: Int): LiveData<List<CartWithItemAndUser>>
 

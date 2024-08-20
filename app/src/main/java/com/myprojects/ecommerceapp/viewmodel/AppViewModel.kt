@@ -59,4 +59,5 @@ class AppViewModel(private val app: Application,
         fun checkExitsUser() = repository.checkExistUser()
         //For Cart
         fun getCartUser(userid: Int) = repository.getCartUser(userid)
+        fun checkExistItemCart(itemId: Int) = repository.checkExistItemCart(itemId)
 }
