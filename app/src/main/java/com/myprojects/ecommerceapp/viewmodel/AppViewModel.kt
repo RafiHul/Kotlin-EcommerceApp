@@ -38,10 +38,10 @@ class AppViewModel(private val app: Application,
         }
         //For Cart
         fun insertCart(cart: Cart) = viewModelScope.launch {
-        repository.deleteCarts(cart)
+            repository.insertCarts(cart)
         }
         fun updateCart(cart: Cart) = viewModelScope.launch {
-            repository.deleteCarts(cart)
+            repository.updateCarts(cart)
         }
         fun deleteCart(cart: Cart) = viewModelScope.launch {
             repository.deleteCarts(cart)
