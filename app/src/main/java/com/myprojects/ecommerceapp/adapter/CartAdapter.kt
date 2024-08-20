@@ -46,6 +46,9 @@ class CartAdapter(private val clickListener : (CartDao.CartWithItemAndUser) -> U
             textViewNamaItem.text = currentList.item.nameItem
             textViewHargaTotal.text = currentList.cart.totalPrice.toString()
             textViewJumlahBeli.text = currentList.cart.quantity.toString()
+            checkBox.setOnCheckedChangeListener { compoundButton, b ->
+
+            }
             buttonBeli.setOnClickListener {
                 clickListener(currentList)
             }

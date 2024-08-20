@@ -16,6 +16,8 @@ import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.adapter.CartAdapter
 import com.myprojects.ecommerceapp.database.CartDao
 import com.myprojects.ecommerceapp.databinding.FragmentCartBinding
+import com.myprojects.ecommerceapp.model.Cart
+import com.myprojects.ecommerceapp.model.Item
 import com.myprojects.ecommerceapp.model.User
 import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
@@ -32,7 +34,9 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
     private lateinit var cartAdapter: CartAdapter
     private lateinit var myNavController: NavController
     private lateinit var profileViewModel: ProfileViewModel
+    private lateinit var currentList: CartDao.CartWithItemAndUser
     private var userid : Int = -1
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -45,7 +49,8 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         super.onViewCreated(view, savedInstanceState)
         appViewModel = (activity as MainActivity).appViewModel
         cartAdapter = CartAdapter{
-            buyItemClick(it)
+            currentList = it
+            buyItemClick()
         }
         myNavController = findNavController()
         profileViewModel = (activity as MainActivity).profileViewModel
@@ -67,11 +72,32 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         }
     }
 
-    private fun buyItemClick(currentList: CartDao.CartWithItemAndUser) {
+    private fun buyItemClick() {
         if (userData.saldo < currentList.cart.totalPrice){
             Toast.makeText(context, "Saldo Anda Tidak Mencukupi", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Berhasil Membeli item", Toast.LENGTH_SHORT).show()
+            buyItem()
+        }
+    }
+
+    private fun buyItem() {
+        updateCartAndItem()
+        appViewModel.updateSaldo(userData.id, (userData.saldo - currentList.cart.totalPrice).toInt())
+        Toast.makeText(context, "Berhasil Membeli item", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun updateCartAndItem() {
+        val currentCart = currentList.cart
+        val currentItem = currentList.item
+        val totalItemQuantity = currentItem.quantity - currentCart.quantity
+        val cart = Cart(currentCart.id, currentCart.itemId, 0, currentCart.totalPrice,currentCart.userId)
+        val item = Item(currentItem.id,currentItem.nameItem,currentItem.price,currentItem.description,totalItemQuantity,currentItem.owner_id)
+
+        appViewModel.deleteCart(cart)
+        if (totalItemQuantity == 0){
+            appViewModel.deleteItems(item)
+        } else {
+            appViewModel.updateItems(item)
         }
     }
 
@@ -85,7 +111,6 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
         activity.let {
             appViewModel.getCartUser(userid).observe(viewLifecycleOwner){
                 if (it.isEmpty()){
-                    Toast.makeText(context, "null masuk sini", Toast.LENGTH_SHORT).show()
                     binding.recyclerViewCart.visibility = View.GONE
                     binding.textViewKosong.visibility = View.VISIBLE
                 } else {
