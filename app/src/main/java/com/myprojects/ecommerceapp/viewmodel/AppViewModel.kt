@@ -36,6 +36,9 @@ class AppViewModel(private val app: Application,
         fun saveLoginData(context: Context, id: Int) = viewModelScope.launch {
             repository.saveLoginData(context,id)
         }
+        fun updateSaldo(saldo:Int, userId:Int) = viewModelScope.launch {
+            repository.updateSaldo(saldo,userId)
+        }
         //For Cart
         fun insertCart(cart: Cart) = viewModelScope.launch {
             repository.insertCarts(cart)

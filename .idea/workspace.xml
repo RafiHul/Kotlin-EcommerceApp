@@ -81,12 +81,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a4805401-bf07-4e40-ad2e-f65b3e4de7aa" name="Changes" comment="improve add cart button">
+    <list default="true" id="a4805401-bf07-4e40-ad2e-f65b3e4de7aa" name="Changes" comment="add checkexistusercart">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/CartDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/CartDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/adapter/CartAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/adapter/CartAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/UserDAO.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/database/UserDAO.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/CartFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/CartFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/TopUpFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/fragment/TopUpFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/repository/AppRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/repository/AppRepository.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/AppViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/AppViewModel.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/ProfileViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/myprojects/ecommerceapp/viewmodel/ProfileViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/cart_view.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/cart_view.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_cart.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_cart.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,7 +100,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=LJ8HF6WSVK5DONGQ)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=/home/Rafihul/.android/avd/Small_Phone_Edited_API_35.avd)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -636,7 +640,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724124872293</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="add checkexistusercart">
+      <option name="closed" value="true" />
+      <created>1724124907228</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1724124907228</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -651,7 +663,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="User Databases" />
     <MESSAGE value="login and register ui" />
     <MESSAGE value="login and register fragment" />
     <MESSAGE value="register system" />
@@ -676,6 +687,7 @@
     <MESSAGE value="change wrong function" />
     <MESSAGE value="cart buy button" />
     <MESSAGE value="improve add cart button" />
-    <option name="LAST_COMMIT_MESSAGE" value="improve add cart button" />
+    <MESSAGE value="add checkexistusercart" />
+    <option name="LAST_COMMIT_MESSAGE" value="add checkexistusercart" />
   </component>
 </project>

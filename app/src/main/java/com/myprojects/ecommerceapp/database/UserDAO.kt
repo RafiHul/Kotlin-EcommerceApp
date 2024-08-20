@@ -19,6 +19,9 @@ interface UserDAO {
     @Delete
     suspend fun DeleteUser(user: User)
 
+    @Query("UPDATE users SET saldo = :saldo WHERE id LIKE :userid")
+    suspend fun UpdateSaldo(saldo:Int,userid:Int)
+
     @Query("SELECT * FROM users WHERE username = :username AND password = :password")
     fun Login(username:String,password:String): LiveData<List<User>>
 

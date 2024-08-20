@@ -18,6 +18,7 @@ class AppRepository(private val db: AppDatabase) {
     suspend fun updateUsers(user: User) = db.getUserDao().UpdateUser(user)
     suspend fun deleteUsers(user: User) = db.getUserDao().DeleteUser(user)
     suspend fun saveLoginData(context: Context, id: Int) = saveLoginInfo(context,id)
+    suspend fun updateSaldo(saldo:Int,userid: Int) = db.getUserDao().UpdateSaldo(saldo,userid)
     //For Carts
     suspend fun insertCarts(cart: Cart) = db.getCartDao().InsertCart(cart)
     suspend fun updateCarts(cart: Cart) = db.getCartDao().UpdateCart(cart)

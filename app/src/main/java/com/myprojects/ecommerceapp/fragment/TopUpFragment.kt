@@ -62,7 +62,7 @@ class TopUpFragment : Fragment(R.layout.fragment_top_up) {
             if (nominal.isEmpty()){
                 binding.editTextNumberDecimalTopupSaldo.error = "Nominal harus diisi"
             } else {
-                appViewModel.updateUser(User(userData.id, userData.username, userData.password, userData.saldo + nominal.toInt()))
+                appViewModel.updateSaldo(userData.saldo + nominal.toInt(),userData.id)
                 Toast.makeText(context, "Berhasil Menambahkan Saldo", Toast.LENGTH_SHORT).show()
                 it.findNavController().navigate(R.id.action_topUpFragment_to_profileFragment)
             }
