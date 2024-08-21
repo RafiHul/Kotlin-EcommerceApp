@@ -50,6 +50,7 @@ class MainActivity : AppCompatActivity() {
         val viewModelProviderFactory = AppViewModelFactory(application,repository)
         val profileViewModelFactory = ProfileViewModelFactory(repository)
 
+
         appViewModel = ViewModelProvider(this,viewModelProviderFactory).get(AppViewModel::class.java)
         profileViewModel = ViewModelProvider(this,profileViewModelFactory).get(ProfileViewModel::class.java)
     }
