@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import com.myprojects.ecommerceapp.activity.MainActivity
@@ -19,8 +20,8 @@ class TopUpFragment : Fragment(R.layout.fragment_top_up) {
     private var _binding: FragmentTopUpBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var topUpSaldoViewModel: TopUpSaldoViewModel
-    lateinit var appViewModel: AppViewModel
+    val appViewModel: AppViewModel by activityViewModels()
+    val topUpSaldoViewModel: TopUpSaldoViewModel by activityViewModels()
     lateinit var userData: User
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,7 +34,6 @@ class TopUpFragment : Fragment(R.layout.fragment_top_up) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setUpViewModel()
         SetSaldo()
         initUi()
         topUpButton()
@@ -48,11 +48,6 @@ class TopUpFragment : Fragment(R.layout.fragment_top_up) {
                 userData = it
             } ?: Toast.makeText(context, "Error Saat Load Akun Anda", Toast.LENGTH_SHORT).show()
         }
-    }
-
-    private fun setUpViewModel() {
-        topUpSaldoViewModel = ViewModelProvider(this).get(TopUpSaldoViewModel::class.java)
-        appViewModel = (activity as MainActivity).appViewModel
     }
 
     private fun topUpButton() {

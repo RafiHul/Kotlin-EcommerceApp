@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,10 +28,10 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
     private var _userData: User? = null
     private val userData get() = _userData!!
 
-    private lateinit var appViewModel: AppViewModel
+    val appViewModel: AppViewModel by activityViewModels()
+    val profileViewModel: ProfileViewModel by activityViewModels()
     private lateinit var cartAdapter: CartAdapter
     private lateinit var myNavController: NavController
-    private lateinit var profileViewModel: ProfileViewModel
     private lateinit var currentList: CartDao.CartWithItemAndUser
     private var userid : Int = -1
 
@@ -65,13 +66,11 @@ class CartFragment : Fragment(R.layout.fragment_cart) {
     }
 
     private fun setUpViewModel() {
-        appViewModel = (activity as MainActivity).appViewModel
         cartAdapter = CartAdapter{
             currentList = it
             buyItemClick()
         }
         myNavController = findNavController()
-        profileViewModel = (activity as MainActivity).profileViewModel
     }
 
     private fun buyItemClick() {

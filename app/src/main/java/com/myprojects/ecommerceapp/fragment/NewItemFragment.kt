@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.activity.addCallback
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import com.myprojects.ecommerceapp.activity.MainActivity
@@ -22,8 +23,8 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
     private var _binding: FragmentNewItemBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var appViewModel: AppViewModel
-    lateinit var profileViewModel: ProfileViewModel
+    val appViewModel: AppViewModel by activityViewModels()
+    val profileViewModel: ProfileViewModel by activityViewModels()
     lateinit var navController : NavController
     var userid : Int = -1
 
@@ -38,8 +39,6 @@ class NewItemFragment : Fragment(R.layout.fragment_new_item) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        appViewModel = (activity as MainActivity).appViewModel
-        profileViewModel = (activity as MainActivity).profileViewModel
         navController = findNavController()
         userid = profileViewModel.userLogId.value!!
 

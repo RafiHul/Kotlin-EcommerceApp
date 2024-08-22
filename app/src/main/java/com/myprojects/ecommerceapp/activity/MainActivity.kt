@@ -25,10 +25,9 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
 
-    val repository = AppRepository(AppDatabase(this))
-    val appViewModel: AppViewModel by viewModels() { AppViewModelFactory(application,repository) }
-    val profileViewModel: ProfileViewModel by viewModels() { ProfileViewModelFactory(repository) }
-    val sharedViewModel: SharedViewModel by viewModels()
+    lateinit var appViewModel: AppViewModel
+    lateinit var profileViewModel: ProfileViewModel
+    lateinit var sharedViewModel: SharedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,6 +41,8 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         binding.navView.setupWithNavController(navController)
 
+        SetUpViewModel()
+
         //clear user login
         lifecycleScope.launch {
             clearLoginInfo(this@MainActivity)
@@ -51,5 +52,15 @@ class MainActivity : AppCompatActivity() {
         sharedViewModel.isBottomNavVisible.observe(this){
             binding.navView.visibility = if (it) View.VISIBLE else View.GONE
         }
+    }
+    private fun SetUpViewModel() {
+        val repository = AppRepository(AppDatabase(this))
+
+        val viewModelProviderFactory = AppViewModelFactory(application,repository)
+        val profileViewModelFactory = ProfileViewModelFactory(repository)
+
+        appViewModel = ViewModelProvider(this,viewModelProviderFactory).get(AppViewModel::class.java)
+        profileViewModel = ViewModelProvider(this,profileViewModelFactory).get(ProfileViewModel::class.java)
+        sharedViewModel = ViewModelProvider(this)[SharedViewModel::class.java]
     }
 }

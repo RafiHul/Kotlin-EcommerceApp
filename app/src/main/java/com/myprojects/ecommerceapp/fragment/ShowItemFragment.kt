@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.myprojects.ecommerceapp.activity.MainActivity
@@ -24,8 +25,8 @@ class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
     private val args: ShowItemFragmentArgs by navArgs()
 
     lateinit var currentItem: Item
-    lateinit var appViewModel: AppViewModel
-    lateinit var profileViewModel: ProfileViewModel
+    val appViewModel: AppViewModel by activityViewModels()
+    val profileViewModel: ProfileViewModel by activityViewModels()
     var userid : Int? = -1
 
     override fun onCreateView(
@@ -40,8 +41,6 @@ class ShowItemFragment : Fragment(R.layout.fragment_show_item) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        appViewModel = (activity as MainActivity).appViewModel
-        profileViewModel = (activity as MainActivity).profileViewModel
         currentItem = args.item!!
 
         userid = profileViewModel.userLogId.value

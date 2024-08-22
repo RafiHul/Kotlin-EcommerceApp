@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import com.myprojects.ecommerceapp.activity.MainActivity
@@ -22,8 +23,8 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
     private var _binding:FragmentProfileBinding? = null
     private val binding get() = _binding!!
 
-    lateinit var profileViewModel: ProfileViewModel
-    lateinit var appViewModel: AppViewModel
+    val appViewModel: AppViewModel by activityViewModels()
+    val profileViewModel: ProfileViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,9 +37,6 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        appViewModel = (activity as MainActivity).appViewModel
-        profileViewModel = (activity as MainActivity).profileViewModel
-
         setupButtons()
         isUserLogged()
 
