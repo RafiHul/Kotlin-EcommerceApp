@@ -10,8 +10,10 @@ import com.myprojects.ecommerceapp.databinding.ItemViewBinding
 import com.myprojects.ecommerceapp.fragment.ItemHomeFragmentDirections
 import com.myprojects.ecommerceapp.fragment.ShowItemFragmentDirections
 import com.myprojects.ecommerceapp.model.Item
+import com.myprojects.ecommerceapp.viewmodel.AppViewModel
+import com.myprojects.ecommerceapp.viewmodel.SharedViewModel
 
-class ItemAdapter():RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
+class ItemAdapter(val sharedViewModel: SharedViewModel):RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
     inner class MyViewHolder(val itemBinding: ItemViewBinding):RecyclerView.ViewHolder(itemBinding.root) {
 
     }
@@ -51,7 +53,7 @@ class ItemAdapter():RecyclerView.Adapter<ItemAdapter.MyViewHolder>() {
 
         holder.itemView.setOnClickListener{
             val direction = ItemHomeFragmentDirections.actionItemHomeFragmentToShowItemFragment(currentItem)
-
+            sharedViewModel.isBottomNavVisible.value = false
             it.findNavController().navigate(direction)
         }
     }

@@ -5,12 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.myprojects.ecommerceapp.activity.MainActivity
 import com.myprojects.ecommerceapp.R
 import com.myprojects.ecommerceapp.adapter.ItemAdapter
 import com.myprojects.ecommerceapp.databinding.FragmentItemHomeBinding
 import com.myprojects.ecommerceapp.viewmodel.AppViewModel
+import com.myprojects.ecommerceapp.viewmodel.SharedViewModel
 
 
 class ItemHomeFragment : Fragment(R.layout.fragment_item_home) {
@@ -19,7 +21,8 @@ class ItemHomeFragment : Fragment(R.layout.fragment_item_home) {
     private val binding get() = _binding!!
 
     lateinit var itemAdapter: ItemAdapter
-    lateinit var appViewModel: AppViewModel
+    val appViewModel: AppViewModel by activityViewModels()
+    val sharedViewModel: SharedViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,8 +35,8 @@ class ItemHomeFragment : Fragment(R.layout.fragment_item_home) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        itemAdapter = ItemAdapter()
-        appViewModel = (activity as MainActivity).appViewModel
+        itemAdapter = ItemAdapter(sharedViewModel)
+        sharedViewModel.isBottomNavVisible.value = true
         setUpRecyclerView()
     }
 

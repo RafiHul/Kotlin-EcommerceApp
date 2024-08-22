@@ -1,7 +1,9 @@
 package com.myprojects.ecommerceapp.activity
 
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
@@ -16,13 +18,17 @@ import com.myprojects.ecommerceapp.viewmodel.AppViewModel
 import com.myprojects.ecommerceapp.viewmodel.AppViewModelFactory
 import com.myprojects.ecommerceapp.viewmodel.ProfileViewModel
 import com.myprojects.ecommerceapp.viewmodel.ProfileViewModelFactory
+import com.myprojects.ecommerceapp.viewmodel.SharedViewModel
 import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
-    lateinit var appViewModel: AppViewModel
-    lateinit var profileViewModel: ProfileViewModel
+
+    val repository = AppRepository(AppDatabase(this))
+    val appViewModel: AppViewModel by viewModels() { AppViewModelFactory(application,repository) }
+    val profileViewModel: ProfileViewModel by viewModels() { ProfileViewModelFactory(repository) }
+    val sharedViewModel: SharedViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,22 +42,14 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         binding.navView.setupWithNavController(navController)
 
-        SetUpViewModel()
-
+        //clear user login
         lifecycleScope.launch {
             clearLoginInfo(this@MainActivity)
         }
 
-    }
-
-    private fun SetUpViewModel() {
-        val repository = AppRepository(AppDatabase(this))
-
-        val viewModelProviderFactory = AppViewModelFactory(application,repository)
-        val profileViewModelFactory = ProfileViewModelFactory(repository)
-
-
-        appViewModel = ViewModelProvider(this,viewModelProviderFactory).get(AppViewModel::class.java)
-        profileViewModel = ViewModelProvider(this,profileViewModelFactory).get(ProfileViewModel::class.java)
+        //mendeteksi bottomnav
+        sharedViewModel.isBottomNavVisible.observe(this){
+            binding.navView.visibility = if (it) View.VISIBLE else View.GONE
+        }
     }
 }
